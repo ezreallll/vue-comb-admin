@@ -7,10 +7,10 @@
                     <el-input placeholder="名称"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <perms-button icon="fa fa-search" :label="`查询`" perms="sys:menu" type="primary"/>
+                    <perms-button icon="fa fa-search" :label="`查询`" perms="sys:role" type="primary"/>
                 </el-form-item>
                 <el-form-item>
-                    <perms-button icon="fa fa-plus" :label="`添加`" perms="sys:menu:edit" type="primary" @click="handleAdd"/>
+                    <perms-button icon="fa fa-plus" :label="`添加`" perms="sys:role:edit" type="primary" @click="handleAdd"/>
                 </el-form-item>
             </el-form>
         </div>
@@ -29,8 +29,8 @@
 
             <el-table-column  header-align="center" align="center" width="185">
                 <template slot-scope="scope">
-                    <perms-button :icon="`el-icon-edit`" perms="sys:menu:edit" type="primary" @click="handleEdit(scope.row)"/>
-                    <perms-button :icon="`el-icon-delete`" perms="sys:menu:delete" type="danger" @click="handleDelete(scope.row)"/>
+                    <perms-button :icon="`el-icon-edit`" perms="sys:role:edit" type="primary" @click="handleEdit(scope.row)"/>
+                    <perms-button :icon="`el-icon-delete`" perms="sys:role:delete" type="danger" @click="handleDelete(scope.row)"/>
                 </template>
             </el-table-column>
         </el-table>
@@ -56,7 +56,7 @@
             <div class="menu-header">
                 <span><B>角色菜单授权</B></span>
                 <el-checkbox class="check_all" v-model="checkAll" @change="handleCheckAll" :disabled="this.currentRole == ''"><b>全选</b></el-checkbox>
-                <perms-button class="menu_save" :label="`保存`"  perms="sys:menu:edit" type="primary" @click="handleMenuSave()"/>
+                <perms-button class="menu_save" :label="`保存`"  perms="sys:role:edit" type="primary" @click="handleMenuSave()"/>
             </div>
             <el-tree :data="menuList" size="mini" show-checkbox node-key="id" :props="defaultProps"
                      style="width: 100%;pading-top:20px;" ref="menuTree" :render-content="renderContent"
@@ -192,7 +192,7 @@
                 })
             },
             handleDelete(row){
-                this.$confirm("确认删除["+row.account+"]吗？", "提示", {
+                this.$confirm("确认删除["+row.role_name+"]吗？", "提示", {
                     type: "warning"
                 }).then(() => {
                     let parms = {
@@ -208,7 +208,7 @@
                                 message: '删除成功',
                                 type: 'success'
                             });
-                            this.getUserList();
+                            this.getRoleListWithMenu();
                         }else {
                             this.$message({
                                 message: res.msg,

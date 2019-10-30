@@ -254,7 +254,6 @@
                     signature: this.$utils.parmsSignature(),
                     data: this.menuForm
                 }
-                console.log(this.menuForm)
                 this.$http.post(parms).then(res => {
                     this.btn_loading = false
                     if(res.status == 1){

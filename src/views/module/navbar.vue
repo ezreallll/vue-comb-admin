@@ -2,8 +2,11 @@
     <div class="menu-bar-container">
 
         <!-- 导航菜单 -->
-        <el-menu ref="navmenu" unique-opened background-color="#545c64" text-color="#fff" active-text-color="#51E2F7">
-        <!-- 导航菜单树组件，动态加载菜单 -->
+        <el-menu ref="navmenu"
+                 background-color="#545c64"
+                 text-color="#fff"
+                 active-text-color="#46A0FC">
+            <!-- 导航菜单树组件，动态加载菜单 -->
             <menu-tree v-for="(item,index) in menuList" :key="index" :menu="item"></menu-tree>
         </el-menu>
     </div>

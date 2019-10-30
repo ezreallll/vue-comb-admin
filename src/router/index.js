@@ -26,8 +26,11 @@ const router = new Router({
             path: '/',
             name: 'main',
             component: _import('index'),
-            children:[]
+            children:[
+
+            ]
         }
+
     ]
 })
 
@@ -87,7 +90,7 @@ function addDynamicMenuAndRoutes() {
 function addDynamicRoutes (menus = [], routes = []) {
     let tempRoute = []
     menus.forEach((menu, index) => {
-        if (menu.children && menu.children.length >= 1) {
+        if (menu.type == 0) { // 当menu类型为目录
             Array.prototype.push.apply(tempRoute,menu.children)
         } else if (menu.url && /\S/.test(menu.url)) {
             try {
@@ -106,7 +109,7 @@ function addDynamicRoutes (menus = [], routes = []) {
                 }
                 routes.push(route)
             }catch(e) {
-
+                console.log(e)
             }
         }
     })

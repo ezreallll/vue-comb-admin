@@ -7,10 +7,10 @@
                     <el-input placeholder="名称"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <perms-button icon="fa fa-search" :label="`查询`" perms="sys:menu" type="primary"/>
+                    <perms-button icon="fa fa-search" :label="`查询`" perms="sys:user" type="primary"/>
                 </el-form-item>
                 <el-form-item>
-                    <perms-button icon="fa fa-plus" :label="`添加`" perms="sys:menu:edit" type="primary" @click="handleAdd"/>
+                    <perms-button icon="fa fa-plus" :label="`添加`" perms="sys:user:edit" type="primary" @click="handleAdd"/>
                 </el-form-item>
             </el-form>
         </div>
@@ -41,8 +41,8 @@
 
             <el-table-column  header-align="center" align="center" width="185">
                 <template slot-scope="scope">
-                    <perms-button :icon="`el-icon-edit`" perms="sys:menu:edit" type="primary" @click="handleEdit(scope.row)"/>
-                    <perms-button :icon="`el-icon-delete`" perms="sys:menu:delete" type="danger" @click="handleDelete(scope.row)"/>
+                    <perms-button :icon="`el-icon-edit`" perms="sys:user:edit" type="primary" @click="handleEdit(scope.row)"/>
+                    <perms-button :icon="`el-icon-delete`" perms="sys:user:delete" type="danger" @click="handleDelete(scope.row)"/>
                 </template>
             </el-table-column>
         </el-table>
