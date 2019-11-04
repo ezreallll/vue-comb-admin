@@ -22,12 +22,11 @@
         },
         data(){
             return {
-                "arg": this.$route.query.arg,
             }
         },
         computed: {
-            menuList () {
-                return JSON.parse(window.sessionStorage.getItem('menuList'))
+            menuList(){
+                return this.$store.state.menu.menuList
             },
             mainTabs: {
                 get () { return this.$store.state.tab.mainTabs },
@@ -37,9 +36,6 @@
                 get () { return this.$store.state.tab.mainTabsActiveName },
                 set (val) { this.$store.commit('updateMainTabsActiveName', val) }
             }
-        },
-        created() {
-
         },
         methods: {
             // 路由操作处理

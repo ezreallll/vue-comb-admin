@@ -73,8 +73,8 @@ function addDynamicMenuAndRoutes() {
     }
     $http.post(parms).then(res => {
         // 添加动态路由
-        sessionStorage.setItem('menuList', JSON.stringify(res.data.menuList || '[]'))
-        sessionStorage.setItem('userName', JSON.stringify(res.data.name || '[]'))
+        store.commit("setUserName",res.data.name)
+        store.commit("setMenuList",res.data.menuList)
         store.commit("setPerms",res.data.perms)
         let dynamicRoutes = addDynamicRoutes(res.data.menuList)
         handleStaticComponent(router, dynamicRoutes)

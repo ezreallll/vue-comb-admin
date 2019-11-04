@@ -89,6 +89,7 @@
                                 :value="item.role_id"
                         ></el-option>
                     </el-select>
+                    <span style="color: darkcyan;font-size: 13px">{{roleList[dataForm.role_id - 1] == undefined ? '': roleList[dataForm.role_id - 1].role_desc}}</span>
                 </el-form-item>
                 <el-form-item label="用户状态" class="dialog">
                     <el-select v-model="dataForm.status" placeholder="请选择">

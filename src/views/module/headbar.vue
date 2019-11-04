@@ -4,7 +4,7 @@
         <h3 class="nav">
             权限管理系统
         </h3>
-
+        {{userName}}
         <button @click="logout">登出</button>
     </div>
 
@@ -19,8 +19,10 @@
                 "arg": this.$route.query.arg,
             }
         },
-        created() {
-
+        computed:{
+            userName(){
+                return this.$store.state.user.userName
+            }
         },
         methods: {
             logout(){
@@ -31,7 +33,7 @@
                 }
                 this.$http.post(parms).then(res => {
                 })
-                sessionStorage.removeItem('token');
+                sessionStorage.clear()
                 this.$router.push({
                     name: '/login'
                 })
